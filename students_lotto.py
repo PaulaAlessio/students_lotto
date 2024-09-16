@@ -28,7 +28,7 @@ def process_data():
   try:
     output = get_namelist(filename, n_students)
     # Font object
-    font_obj = tkfont.Font(size=20)
+    font_obj = tkfont.Font(size=20, family="monospace")
 
     # adds a Message
     entry_names = tk.Message(root, text=output, font=font_obj)
