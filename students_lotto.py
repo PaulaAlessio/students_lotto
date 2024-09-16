@@ -6,7 +6,7 @@ import tkinter.font as tkfont
 
 
 def browse_file():
-  """Funzione per aprire una finestra di dialogo e selezionare un file."""
+  """Function that opens a dialog and selects a file"""
   filename = filedialog.askopenfilename(
     filetypes=[("CSV files", "*.csv"), ("All files", "*.*")]
   )
@@ -16,23 +16,22 @@ def browse_file():
 
 
 def process_data():
-  """Funzione per leggere il file e il parametro e mostrare un messaggio."""
+  """ Function that processes the input data."""
   filename = file_entry.get()
   n_students = int(param_entry.get())
 
-  # Verifica che il file sia selezionato e che il parametro non sia vuoto
+  # Checks that the input data have been entered.
   if not filename or not n_students:
     messagebox.showwarning("Input Error", "Please select a file and enter a n_students.")
     return
 
   try:
     output = get_namelist(filename, n_students)
-    # creating a font object
+    # Font object
     font_obj = tkfont.Font(size=20)
 
-    # adding a label
+    # adds a Message
     entry_names = tk.Message(root, text=output, font=font_obj)
-    # l.pack()
     entry_names.grid(row=3, column=1, padx=10, pady=10, sticky="e")
 
   except Exception as e:
@@ -40,7 +39,7 @@ def process_data():
 
 
 def get_namelist(filename, number):
-  """ Get namelist"""
+  """Function that obtains the desired namelist """
   namelist = []
   with open(filename, newline='', encoding="utf-8-sig") as csvfile:
     reader = csv.DictReader(csvfile)
