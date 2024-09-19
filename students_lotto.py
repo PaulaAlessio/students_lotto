@@ -44,11 +44,10 @@ def get_namelist(filename, number):
   with open(filename, newline='', encoding="utf-8-sig") as csvfile:
     reader = csv.DictReader(csvfile)
     for row in reader:
-      namelist.append(row['Nombre'] + ' ' + row['Apellido(s)'])
-
+      namelist.append(row['Apellido(s)'] + ', ' + row['Nombre'])
   chosen = random.sample(namelist, k=number)
   my_string = ""
-  for student in chosen:
+  for student in sorted(chosen):
     my_string = my_string + student + "\n\n"
 
   print(my_string)
