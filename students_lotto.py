@@ -1,3 +1,4 @@
+#! /usr/bin/python
 import csv
 import random
 import tkinter as tk
